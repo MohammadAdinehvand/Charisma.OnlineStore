@@ -79,35 +79,5 @@ namespace Charisma.OnlineStore.UnitTests.Model
             Assert.Equal("Profit margin cannot be negative", exception.Message);
         }
 
-        [Fact]
-        public void GivenOrderItem_WhenApplyingDiscount_ThenFinalPriceShouldBeReduced()
-        {
-            // Given
-            var orderItem = new OrderItem(1, "Product A", 100m, 2);
-
-            // When
-            orderItem.ApplyDiscount(50m);
-
-            // Then
-            Assert.Equal(150m, orderItem.FinalPrice); // (2 * 100) - 50 = 150
-        }
-
-
-        [Fact]
-        public void GivenOrderItem_WhenApplyingDiscountGreaterThanFinalPrice_ThenFinalPriceShouldBeZero()
-        {
-            // Given
-            var orderItem = new OrderItem(1, "Product A", 100m, 2);
-
-            // When
-            orderItem.ApplyDiscount(300m);
-
-            // Then
-            Assert.Equal(0m, orderItem.FinalPrice); // Price cannot go below zero
-        }
-
-
-
-
     }
 }

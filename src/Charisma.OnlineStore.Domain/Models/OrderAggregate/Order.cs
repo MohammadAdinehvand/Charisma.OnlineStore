@@ -53,17 +53,6 @@ namespace Charisma.OnlineStore.Domain.Models.OrderAggregate
                 throw new OrderDomainException("The discount amount cannot exceed the total price of the order items");
             _totalDiscount = discountAmount;
         }
-        //public void ApplyFlatDiscountToOrder(decimal discountAmount)
-        //{
-        //    _totalDiscount += discountAmount;
-        //}
-        //public void ApplyPercentageDiscountToOrder(decimal percentage)
-        //{
-        //    decimal totalBeforeDiscount = CalculateItemTotal();
-
-        //    decimal discount = totalBeforeDiscount * (percentage / 100);
-        //    ApplyFlatDiscountToOrder(discount);
-        //}
         public decimal CalculateFinalTotal()
         {
             decimal total = CalculateItemTotal();
