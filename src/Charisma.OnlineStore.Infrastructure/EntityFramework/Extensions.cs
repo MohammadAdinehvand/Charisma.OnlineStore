@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace Charisma.OnlineStore.Infrastructure.EntityFramework
 {
@@ -16,7 +17,7 @@ namespace Charisma.OnlineStore.Infrastructure.EntityFramework
         {
             var connectionString = configuration.GetConnectionString(DataBaseConfig.Charisma_OnlineStore_DataBase);
             services.AddDbContext<OnlineStoreContext>(ctx => ctx.UseSqlServer(connectionString));
-
+            services.SeedData();
             return services;
         }
     }
