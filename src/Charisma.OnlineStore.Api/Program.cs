@@ -1,4 +1,5 @@
 
+using Charisma.OnlineStore.Api.Middleware;
 using Charisma.OnlineStore.Application;
 using Charisma.OnlineStore.Infrastructure;
 using System.Reflection;
@@ -20,7 +21,6 @@ namespace Charisma.OnlineStore.Api
 
             builder.Services.AddInfrastructure(builder.Configuration);
             builder.Services.AddApplication();
-          //  builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -29,7 +29,7 @@ namespace Charisma.OnlineStore.Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
             app.UseHttpsRedirection();
 
             app.UseAuthorization();

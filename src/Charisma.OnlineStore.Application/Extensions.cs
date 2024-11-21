@@ -3,6 +3,7 @@ using Charisma.OnlineStore.Domain.DomainServices;
 using Charisma.OnlineStore.Domain.Factories;
 using Charisma.OnlineStore.Domain.Models.OrderAggregate;
 using Charisma.OnlineStore.Domain.Specifications;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -18,25 +19,28 @@ namespace Charisma.OnlineStore.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            var assembly =Assembly.GetExecutingAssembly();
+            var assembly = Assembly.GetExecutingAssembly();
 
-            //   services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             services.AddMediatR(configuration =>
             {
                 configuration.RegisterServicesFromAssembly(assembly);
             });
 
-            //   services.AddValidatorsFromAssembly(assembly);
+            services.AddValidatorsFromAssembly(assembly);
+
+
+
             services.AddScoped<IOrderFactory>(x =>
-            {
-                IEnumerable<ISpecification<Order>> specifications= new List<ISpecification<Order>>() 
-                {
+             {
+                 IEnumerable<ISpecification<Order>> specifications = new List<ISpecification<Order>>()
+                 {
                     { new MinimumOrderAmountSpecification() },
                     { new OrderTimeSpecification() },
-                };         
-                return new OrderFactory(specifications);
-            });
+                 };
+                 return new OrderFactory(specifications);
+             });
 
             services.AddScoped<IPricingService, PricingService>();
             return services;

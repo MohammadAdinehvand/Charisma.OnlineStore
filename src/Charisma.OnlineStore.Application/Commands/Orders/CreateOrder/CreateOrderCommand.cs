@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Charisma.OnlineStore.Application.Commands.Orders.CreateOrder
 {
-    public class CreateOrderCommand: IRequest
+    public class CreateOrderCommand: IRequest<Unit>
     {
         public long BuyerId { get; set; }
         public string Street { get; set; }

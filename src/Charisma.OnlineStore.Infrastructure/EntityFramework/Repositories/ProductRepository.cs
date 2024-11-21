@@ -28,16 +28,7 @@ namespace Charisma.OnlineStore.Infrastructure.EntityFramework.Repositories
 
         public async Task<IEnumerable<Product>> GetByIdAsync(List<long> ids)
         {
-            try
-            {
-
             return await _onlineStoreContext.Products.Where(x => ids.Contains(x.Id)).ToListAsync();
-            }
-            catch (Exception ex) 
-            {
-
-                throw;
-            }
         }
     }
 }
