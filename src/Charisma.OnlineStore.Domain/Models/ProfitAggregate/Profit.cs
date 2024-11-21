@@ -39,7 +39,7 @@ namespace Charisma.OnlineStore.Domain.Models.ProfitAggregate
         {
             if (!Active)
             {
-                return 0; // اگر غیرفعال باشد سودی محاسبه نمی‌شود
+                return 0; 
             }
 
             return _fixedAmount;

@@ -35,7 +35,7 @@ namespace Charisma.OnlineStore.Domain.DomainServices
                 item.AddProfitMargin(profit.Calculate());
             }
         }
-        public async Task ApplyDiscountToOrder(Order order)
+        private async Task ApplyDiscountToOrder(Order order)
         {
             var discount = await _discountRepository.GetActiveDiscountAsync();
             if (discount is null) return;
