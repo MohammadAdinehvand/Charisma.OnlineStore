@@ -17,8 +17,7 @@ namespace Charisma.OnlineStore.Domain.Specifications
 
         public ValueTask<bool> IsSatisfiedBy(Order order)
         {
-            //return ValueTask.FromResult(!(order.OrderTime() >= StartOfDay && order.OrderTime() <= EndOfDay));
-            return ValueTask.FromResult(false);
+            return ValueTask.FromResult(!(order.OrderTime() >= StartOfDay && order.OrderTime() <= EndOfDay));
         }
     }
 }
