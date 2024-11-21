@@ -60,7 +60,7 @@ namespace Charisma.OnlineStore.Domain.Models.OrderAggregate
             }
 
             decimal newFinalPrice = FinalPrice - discountAmount;
-            if (newFinalPrice < 0) newFinalPrice = 0;  // Ensures final price cannot go below zero
+            if (newFinalPrice < 0) newFinalPrice = 0;
 
             _profitMargin = newFinalPrice - (_unitPrice * _units);
         }

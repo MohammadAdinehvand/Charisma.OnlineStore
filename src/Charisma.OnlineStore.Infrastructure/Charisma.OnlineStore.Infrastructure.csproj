@@ -18,10 +18,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Scrutor" Version="5.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Charisma.OnlineStore.Domain\Charisma.OnlineStore.Domain.csproj" />
+    <ProjectReference Include="..\Shared\Charisma.OnlineStore.Abstractions\Charisma.OnlineStore.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

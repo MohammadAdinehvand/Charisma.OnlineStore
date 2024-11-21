@@ -18,9 +18,10 @@ namespace Charisma.OnlineStore.Infrastructure.EntityFramework.Configurations
             builder.ToTable(nameof(Order));
 
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id);
-            builder.Property(x => x.BuyerId);
-            builder.Property(x => x.OrderDate);
+            builder.Property(x => x.Id).HasColumnOrder(1);
+            builder.Property(x => x.BuyerId).HasColumnOrder(2);
+            builder.Property(x => x.OrderDate).HasColumnOrder(3);
+            builder.Property<decimal>("_totalDiscount").HasColumnName("TotalDiscount").HasColumnOrder(4);
 
             builder
                   .HasOne(typeof(Buyer))
@@ -30,11 +31,11 @@ namespace Charisma.OnlineStore.Infrastructure.EntityFramework.Configurations
 
             builder.OwnsOne(x => x.Address, address =>
             {
-                address.Property(x => x.Country).HasColumnName("Country").HasColumnType("nvarchar(50)");
-                address.Property(x => x.State).HasColumnName("State").HasColumnType("nvarchar(50)");
-                address.Property(x => x.City).HasColumnName("City").HasColumnType("nvarchar(50)");
-                address.Property(x => x.Street).HasColumnName("Street").HasColumnType("nvarchar(50)");
-                address.Property(x => x.ZipCode).HasColumnName("ZipCode").HasColumnType("nvarchar(50)");
+                address.Property(x => x.Country).HasColumnName("Country").HasColumnType("nvarchar(50)").HasColumnOrder(5);
+                address.Property(x => x.State).HasColumnName("State").HasColumnType("nvarchar(50)").HasColumnOrder(6);
+                address.Property(x => x.City).HasColumnName("City").HasColumnType("nvarchar(50)").HasColumnOrder(7);
+                address.Property(x => x.Street).HasColumnName("Street").HasColumnType("nvarchar(50)").HasColumnOrder(8);
+                address.Property(x => x.ZipCode).HasColumnName("ZipCode").HasColumnType("nvarchar(50)").HasColumnOrder(9);
 
             });
 

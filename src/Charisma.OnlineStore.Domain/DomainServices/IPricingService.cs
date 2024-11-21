@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Charisma.OnlineStore.Domain.DomainServices
 {
-    internal interface IPricingService
+    public interface IPricingService
     {
         void AddProfitMarginToOrder(Order order, decimal markupAmount);
         void ApplyFlatDiscountToOrder(Order order, decimal discountAmount);

@@ -29,7 +29,7 @@ namespace Charisma.OnlineStore.Domain.Models.OrderAggregate
         public Address Address { get; private set; }
         public IEnumerable<OrderItem> OrderItems => _orderItems.AsReadOnly();
 
-        private decimal CalculateItmeTotal()=> _orderItems.Sum(x => x.FinalPrice);
+        private decimal CalculateItemTotal()=> _orderItems.Sum(x => x.FinalPrice);
         public void AddOrderItem(long productId, string productName, decimal unitPrice, int units = 1)
         {
             if (_orderItems.Any(x => x.ProductId == productId))
@@ -38,21 +38,27 @@ namespace Charisma.OnlineStore.Domain.Models.OrderAggregate
             var orderItem = new OrderItem(productId, productName, unitPrice, units);
             _orderItems.Add(orderItem);
         }
+        internal void AddOrderItem(OrderItem orderItem)
+        {
+            if (_orderItems.Any(x => x.ProductId == orderItem.ProductId))
+                throw new OrderDomainException("The product has already been added to the order.");
 
+            _orderItems.Add(orderItem);
+        }
         public void ApplyFlatDiscountToOrder(decimal discountAmount)
         {
             _totalDiscount += discountAmount;
         }
         public void ApplyPercentageDiscountToOrder(decimal percentage)
         {
-            decimal totalBeforeDiscount = CalculateItmeTotal();
+            decimal totalBeforeDiscount = CalculateItemTotal();
 
             decimal discount = totalBeforeDiscount * (percentage / 100);
             ApplyFlatDiscountToOrder(discount);
         }
         public decimal CalculateTotal()
         {
-            decimal total = CalculateItmeTotal();
+            decimal total = CalculateItemTotal();
             total -= _totalDiscount;
             return total < 0 ? 0 : total; 
         }

@@ -12,6 +12,7 @@ namespace Charisma.OnlineStore.Domain.Models.ProductAggregate
     {
         public ProductType ProductType { get;private set; }
         public string Name { get;private set; }
+        public decimal UnitPrice { get;private set; }
 
     }
 }

@@ -18,9 +18,13 @@ namespace Charisma.OnlineStore.Domain.Factories
         {
             _specifications = specifications;
         }
-        public async ValueTask<Order> CreateAsync(DateTime orderDate, long buyerId, Address address)
+        public async ValueTask<Order> CreateAsync(DateTime orderDate, long buyerId, Address address, List<OrderItem> orderItems)
         {
             var order= new Order(orderDate, buyerId, address);
+            foreach (var item in orderItems) 
+            {
+                order.AddOrderItem(item);
+            }
             List<string> messages = new(); 
             foreach (var specification in _specifications) 
             {

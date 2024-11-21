@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable disable
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,6 @@ namespace Charisma.OnlineStore.Abstractions.Domain
                 _Id = value;
             }
         }
-       // public int Version { get; protected set; }
 
 
         public IEnumerable<IDomainEvent> Events => _events;
@@ -31,7 +31,6 @@ namespace Charisma.OnlineStore.Abstractions.Domain
         {
             if (!_events.Any() && !_versionIncremented)
             {
-         //       Version++;
                 _versionIncremented = true;
                 _events.Add(@event);
 
@@ -45,7 +44,6 @@ namespace Charisma.OnlineStore.Abstractions.Domain
                 return;
 
             }
-         //   Version++;
             _versionIncremented = true;
         }
 

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Charisma.OnlineStore.Application\Charisma.OnlineStore.Application.csproj" />
+    <ProjectReference Include="..\Charisma.OnlineStore.Infrastructure\Charisma.OnlineStore.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://chat-agents.lobehub.com/schema/lobeAgentSchema_v1.json" /></VisualStudio></ProjectExtensions>
+
+</Project>

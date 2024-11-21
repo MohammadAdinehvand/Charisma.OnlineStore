@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35506.116 d17.12
+VisualStudioVersion = 17.12.35506.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3F0EC76A-5475-4583-A6F5-64B5FF8C0383}"
 EndProject
@@ -16,6 +16,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Charisma.OnlineStore.UnitTests", "test\Charisma.OnlineStore.UnitTests\Charisma.OnlineStore.UnitTests.csproj", "{C7A10547-F117-40C3-A054-ECDC3B31BD31}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Charisma.OnlineStore.Infrastructure", "src\Charisma.OnlineStore.Infrastructure\Charisma.OnlineStore.Infrastructure.csproj", "{BA7D19A9-1C85-4703-B49F-88BDC0AC6EFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Charisma.OnlineStore.Application", "src\Charisma.OnlineStore.Application\Charisma.OnlineStore.Application.csproj", "{13713E47-5E92-4C75-BAC0-45D31030C78F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Charisma.OnlineStore.Api", "src\Charisma.OnlineStore.Api\Charisma.OnlineStore.Api.csproj", "{E592FCC0-0BA7-47F1-990D-7E56EF64F3DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{BA7D19A9-1C85-4703-B49F-88BDC0AC6EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA7D19A9-1C85-4703-B49F-88BDC0AC6EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA7D19A9-1C85-4703-B49F-88BDC0AC6EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13713E47-5E92-4C75-BAC0-45D31030C78F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13713E47-5E92-4C75-BAC0-45D31030C78F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13713E47-5E92-4C75-BAC0-45D31030C78F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13713E47-5E92-4C75-BAC0-45D31030C78F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E592FCC0-0BA7-47F1-990D-7E56EF64F3DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E592FCC0-0BA7-47F1-990D-7E56EF64F3DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E592FCC0-0BA7-47F1-990D-7E56EF64F3DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E592FCC0-0BA7-47F1-990D-7E56EF64F3DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,5 +61,7 @@ Global
 		{E53F00B7-1747-4E83-95B3-35E2B8F43EAB} = {7D5885B2-025E-4B9B-8AE8-29A43B96ACCB}
 		{C7A10547-F117-40C3-A054-ECDC3B31BD31} = {94C08B83-9C11-4D40-A171-9BA7DF3AE8A8}
 		{BA7D19A9-1C85-4703-B49F-88BDC0AC6EFD} = {3F0EC76A-5475-4583-A6F5-64B5FF8C0383}
+		{13713E47-5E92-4C75-BAC0-45D31030C78F} = {3F0EC76A-5475-4583-A6F5-64B5FF8C0383}
+		{E592FCC0-0BA7-47F1-990D-7E56EF64F3DF} = {3F0EC76A-5475-4583-A6F5-64B5FF8C0383}
 	EndGlobalSection
 EndGlobal

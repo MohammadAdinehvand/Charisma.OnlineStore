@@ -32,15 +32,15 @@ namespace Charisma.OnlineStore.Infrastructure.EntityFramework.Migrations
 
                     b.Property<string>("Family")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(15)");
 
                     b.HasKey("Id");
 
@@ -51,13 +51,21 @@ namespace Charisma.OnlineStore.Infrastructure.EntityFramework.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnOrder(1);
 
                     b.Property<long>("BuyerId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnOrder(2);
 
                     b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime2")
+                        .HasColumnOrder(3);
+
+                    b.Property<decimal>("_totalDiscount")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("TotalDiscount")
+                        .HasColumnOrder(4);
 
                     b.HasKey("Id");
 
@@ -76,10 +84,13 @@ namespace Charisma.OnlineStore.Infrastructure.EntityFramework.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(300)");
 
                     b.Property<int>("ProductType")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -107,7 +118,7 @@ namespace Charisma.OnlineStore.Infrastructure.EntityFramework.Migrations
                                 .HasColumnType("bigint");
 
                             b1.Property<string>("_productName")
-                                .HasColumnType("nvarchar(500)")
+                                .HasColumnType("nvarchar(300)")
                                 .HasColumnName("ProductName");
 
                             b1.Property<decimal>("_profitMargin")
@@ -146,27 +157,32 @@ namespace Charisma.OnlineStore.Infrastructure.EntityFramework.Migrations
                             b1.Property<string>("City")
                                 .IsRequired()
                                 .HasColumnType("nvarchar(50)")
-                                .HasColumnName("City");
+                                .HasColumnName("City")
+                                .HasColumnOrder(7);
 
                             b1.Property<string>("Country")
                                 .IsRequired()
                                 .HasColumnType("nvarchar(50)")
-                                .HasColumnName("Country");
+                                .HasColumnName("Country")
+                                .HasColumnOrder(5);
 
                             b1.Property<string>("State")
                                 .IsRequired()
                                 .HasColumnType("nvarchar(50)")
-                                .HasColumnName("State");
+                                .HasColumnName("State")
+                                .HasColumnOrder(6);
 
                             b1.Property<string>("Street")
                                 .IsRequired()
                                 .HasColumnType("nvarchar(50)")
-                                .HasColumnName("Street");
+                                .HasColumnName("Street")
+                                .HasColumnOrder(8);
 
                             b1.Property<string>("ZipCode")
                                 .IsRequired()
                                 .HasColumnType("nvarchar(50)")
-                                .HasColumnName("ZipCode");
+                                .HasColumnName("ZipCode")
+                                .HasColumnOrder(9);
 
                             b1.HasKey("OrderId");
 

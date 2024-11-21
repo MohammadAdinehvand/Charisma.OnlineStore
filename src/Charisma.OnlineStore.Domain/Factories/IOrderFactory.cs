@@ -10,6 +10,6 @@ namespace Charisma.OnlineStore.Domain.Factories
 {
     public interface IOrderFactory
     {
-        ValueTask<Order> CreateAsync(DateTime orderDate, long buyerId, Address address);
+        ValueTask<Order> CreateAsync(DateTime orderDate, long buyerId, Address address, List<OrderItem> orderItems);
     }
 }
