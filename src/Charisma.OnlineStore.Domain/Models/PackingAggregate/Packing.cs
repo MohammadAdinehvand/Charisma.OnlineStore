@@ -1,5 +1,4 @@
 ﻿using Charisma.OnlineStore.Abstractions.Domain;
-using Charisma.OnlineStore.Domain.Models.Enums;
 
 
 namespace Charisma.OnlineStore.Domain.Models.PackingAggregate

@@ -1,5 +1,4 @@
 ﻿using Charisma.OnlineStore.Abstractions.Domain;
-using Charisma.OnlineStore.Domain.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

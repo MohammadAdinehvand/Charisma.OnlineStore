@@ -51,8 +51,7 @@ namespace Charisma.OnlineStore.Domain.Models.OrderAggregate
 
             _profitMargin += profit;
         }
-
-        public void ApplyFlatDiscount(decimal discountAmount)
+        public void ApplyDiscount(decimal discountAmount)
         {
             if (discountAmount < 0)
             {
@@ -64,16 +63,28 @@ namespace Charisma.OnlineStore.Domain.Models.OrderAggregate
 
             _profitMargin = newFinalPrice - (_unitPrice * _units);
         }
+        //public void ApplyFlatDiscount(decimal discountAmount)
+        //{
+        //    if (discountAmount < 0)
+        //    {
+        //        throw new OrderDomainException("Discount amount cannot be negative");
+        //    }
 
-        public void ApplyPercentageDiscount(decimal percentage)
-        {
-            if (percentage < 0)
-            {
-                throw new OrderDomainException("Percentage cannot be negative");
-            }
+        //    decimal newFinalPrice = FinalPrice - discountAmount;
+        //    if (newFinalPrice < 0) newFinalPrice = 0;
 
-            decimal discountAmount = (_unitPrice * _units) * (percentage / 100);
-            ApplyFlatDiscount(discountAmount);
-        }
+        //    _profitMargin = newFinalPrice - (_unitPrice * _units);
+        //}
+
+        //public void ApplyPercentageDiscount(decimal percentage)
+        //{
+        //    if (percentage < 0)
+        //    {
+        //        throw new OrderDomainException("Percentage cannot be negative");
+        //    }
+
+        //    decimal discountAmount = (_unitPrice * _units) * (percentage / 100);
+        //    ApplyFlatDiscount(discountAmount);
+        //}
     }
 }

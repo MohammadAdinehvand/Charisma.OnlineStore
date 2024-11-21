@@ -1,6 +1,8 @@
 ﻿using Charisma.OnlineStore.Domain.Models.BuyerAggregate;
+using Charisma.OnlineStore.Domain.Models.DiscountAggregate;
 using Charisma.OnlineStore.Domain.Models.OrderAggregate;
 using Charisma.OnlineStore.Domain.Models.ProductAggregate;
+using Charisma.OnlineStore.Domain.Models.ProfitAggregate;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,6 +18,8 @@ namespace Charisma.OnlineStore.Infrastructure.EntityFramework.Context
         public DbSet<Order> Orders { get; set; }
         public DbSet<Buyer> Buyers { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Discount> Discounts { get; set; }
+        public DbSet<Profit> Profits { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

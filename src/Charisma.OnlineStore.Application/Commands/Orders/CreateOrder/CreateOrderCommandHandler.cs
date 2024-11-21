@@ -39,8 +39,7 @@ namespace Charisma.OnlineStore.Application.Commands.Orders.CreateOrder
             }
             var order = await _orderFactory.CreateAsync(DateTime.Now, request.BuyerId, address, orderItems);
       
-            _pricingService.AddProfitMarginToOrder(order, 100);
-
+            await _pricingService.CalculateOrderPrice(order);
             await _orderRepository.AddAsync(order);
             return Unit.Value;
 

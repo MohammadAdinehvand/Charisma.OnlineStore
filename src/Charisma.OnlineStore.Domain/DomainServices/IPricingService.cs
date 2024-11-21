@@ -9,8 +9,6 @@ namespace Charisma.OnlineStore.Domain.DomainServices
 {
     public interface IPricingService
     {
-        void AddProfitMarginToOrder(Order order, decimal markupAmount);
-        void ApplyFlatDiscountToOrder(Order order, decimal discountAmount);
-        void ApplyPercentageDiscountToOrder(Order order, decimal percentage);
+        Task CalculateOrderPrice(Order order);
     }
 }

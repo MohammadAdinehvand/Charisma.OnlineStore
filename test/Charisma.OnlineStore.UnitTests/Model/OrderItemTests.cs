@@ -80,13 +80,13 @@ namespace Charisma.OnlineStore.UnitTests.Model
         }
 
         [Fact]
-        public void GivenOrderItem_WhenApplyingFlatDiscount_ThenFinalPriceShouldBeReduced()
+        public void GivenOrderItem_WhenApplyingDiscount_ThenFinalPriceShouldBeReduced()
         {
             // Given
             var orderItem = new OrderItem(1, "Product A", 100m, 2);
 
             // When
-            orderItem.ApplyFlatDiscount(50m);
+            orderItem.ApplyDiscount(50m);
 
             // Then
             Assert.Equal(150m, orderItem.FinalPrice); // (2 * 100) - 50 = 150
@@ -94,30 +94,19 @@ namespace Charisma.OnlineStore.UnitTests.Model
 
 
         [Fact]
-        public void GivenOrderItem_WhenApplyingFlatDiscountGreaterThanFinalPrice_ThenFinalPriceShouldBeZero()
+        public void GivenOrderItem_WhenApplyingDiscountGreaterThanFinalPrice_ThenFinalPriceShouldBeZero()
         {
             // Given
             var orderItem = new OrderItem(1, "Product A", 100m, 2);
 
             // When
-            orderItem.ApplyFlatDiscount(300m);
+            orderItem.ApplyDiscount(300m);
 
             // Then
             Assert.Equal(0m, orderItem.FinalPrice); // Price cannot go below zero
         }
 
-        [Fact]
-        public void GivenOrderItem_WhenApplyingPercentageDiscount_ThenFinalPriceShouldBeReduced()
-        {
-            // Given
-            var orderItem = new OrderItem(1, "Product A", 100m, 2);
 
-            // When
-            orderItem.ApplyPercentageDiscount(10); // 10% discount
-
-            // Then
-            Assert.Equal(180m, orderItem.FinalPrice); // (2 * 100) - 10% of 200 = 180
-        }
 
 
     }

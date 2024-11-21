@@ -16,7 +16,7 @@ namespace Charisma.OnlineStore.Domain.Specifications
 
         public ValueTask<bool> IsSatisfiedBy(Order order)
         {
-            return ValueTask.FromResult(order.CalculateTotal() < MinimumOrderAmount);
+            return ValueTask.FromResult(order.CalculateFinalTotal() < MinimumOrderAmount);
         }
     }
 }

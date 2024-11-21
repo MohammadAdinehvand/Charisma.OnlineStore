@@ -58,36 +58,23 @@ namespace Charisma.OnlineStore.UnitTests.Model
             _order.AddOrderItem(2, "Product B", 200m, 1);
 
             // When
-            var calculateTotal = _order.CalculateTotal();
+            var calculateTotal = _order.CalculateFinalTotal();
 
             // Then
             Assert.Equal(400m, calculateTotal);
         }
         [Fact]
-        public void GivenOrderWithItems_WhenApplyingFlatDiscount_ThenTotalShouldBeReducedByDiscountAmount()
+        public void GivenOrderWithItems_WhenApplyingDiscount_ThenTotalShouldBeReducedByDiscountAmount()
         {
             // Given
             _order.AddOrderItem(1, "Product A", 100m, 2);
-            _order.ApplyFlatDiscountToOrder(50m);
+            _order.ApplyDiscountToOrder(50m);
 
             // When
-            var total = _order.CalculateTotal();
+            var total = _order.CalculateFinalTotal();
 
             // Then
             Assert.Equal(150m, total); // 200 - 50 = 150
-        }
-        [Fact]
-        public void GivenOrderWithItems_WhenApplyingPercentageDiscount_ThenTotalShouldBeReducedByCorrectAmount()
-        {
-            // Given
-            _order.AddOrderItem(1, "Product A", 100m, 2);
-            _order.ApplyPercentageDiscountToOrder(10); // 10% discount
-
-            // When
-            var total = _order.CalculateTotal();
-
-            // Then
-            Assert.Equal(180m, total); // 200 - 50 = 150
         }
     }
 }

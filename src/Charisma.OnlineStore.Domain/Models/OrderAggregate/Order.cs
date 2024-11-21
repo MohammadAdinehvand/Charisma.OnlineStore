@@ -29,7 +29,7 @@ namespace Charisma.OnlineStore.Domain.Models.OrderAggregate
         public Address Address { get; private set; }
         public IEnumerable<OrderItem> OrderItems => _orderItems.AsReadOnly();
 
-        private decimal CalculateItemTotal()=> _orderItems.Sum(x => x.FinalPrice);
+        public decimal CalculateItemTotal()=> _orderItems.Sum(x => x.FinalPrice);
         public void AddOrderItem(long productId, string productName, decimal unitPrice, int units = 1)
         {
             if (_orderItems.Any(x => x.ProductId == productId))
@@ -45,18 +45,26 @@ namespace Charisma.OnlineStore.Domain.Models.OrderAggregate
 
             _orderItems.Add(orderItem);
         }
-        public void ApplyFlatDiscountToOrder(decimal discountAmount)
+        public void ApplyDiscountToOrder(decimal discountAmount)
         {
-            _totalDiscount += discountAmount;
+            if (discountAmount < 0)
+                throw new OrderDomainException("The discount amount cannot be negative.");
+            if (discountAmount > CalculateItemTotal())
+                throw new OrderDomainException("The discount amount cannot exceed the total price of the order items");
+            _totalDiscount = discountAmount;
         }
-        public void ApplyPercentageDiscountToOrder(decimal percentage)
-        {
-            decimal totalBeforeDiscount = CalculateItemTotal();
+        //public void ApplyFlatDiscountToOrder(decimal discountAmount)
+        //{
+        //    _totalDiscount += discountAmount;
+        //}
+        //public void ApplyPercentageDiscountToOrder(decimal percentage)
+        //{
+        //    decimal totalBeforeDiscount = CalculateItemTotal();
 
-            decimal discount = totalBeforeDiscount * (percentage / 100);
-            ApplyFlatDiscountToOrder(discount);
-        }
-        public decimal CalculateTotal()
+        //    decimal discount = totalBeforeDiscount * (percentage / 100);
+        //    ApplyFlatDiscountToOrder(discount);
+        //}
+        public decimal CalculateFinalTotal()
         {
             decimal total = CalculateItemTotal();
             total -= _totalDiscount;

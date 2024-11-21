@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Charisma.OnlineStore.Domain.Models.Enums
+namespace Charisma.OnlineStore.Domain.Models.DiscountAggregate
 {
-    public enum ProductType
+    public enum DiscountType
     {
-        Normal=1,
-        Fragile
+        PERCENTAGE=1,
+        FIXED
     }
 }

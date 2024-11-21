@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Charisma.OnlineStore.Domain.Models.Enums
+namespace Charisma.OnlineStore.Domain.Models.PackingAggregate
 {
     public enum ProtectionLevel
     {
-        Normal=1,
-        Fragile
+        NORMAL = 1,
+        FRAGILE
     }
 }

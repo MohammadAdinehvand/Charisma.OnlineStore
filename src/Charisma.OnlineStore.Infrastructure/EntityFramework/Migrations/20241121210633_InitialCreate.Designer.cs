@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Charisma.OnlineStore.Infrastructure.EntityFramework.Migrations
 {
     [DbContext(typeof(OnlineStoreContext))]
-    [Migration("20241121122800_InitialCreate")]
+    [Migration("20241121210633_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -48,6 +48,36 @@ namespace Charisma.OnlineStore.Infrastructure.EntityFramework.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Buyer", (string)null);
+                });
+
+            modelBuilder.Entity("Charisma.OnlineStore.Domain.Models.DiscountAggregate.Discount", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("_active")
+                        .HasColumnType("bit")
+                        .HasColumnName("Active");
+
+                    b.Property<int>("_discountType")
+                        .HasColumnType("int")
+                        .HasColumnName("DiscountType");
+
+                    b.Property<string>("_title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(300)")
+                        .HasColumnName("Title");
+
+                    b.Property<decimal>("_value")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("Value");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Discount", (string)null);
                 });
 
             modelBuilder.Entity("Charisma.OnlineStore.Domain.Models.OrderAggregate.Order", b =>
@@ -98,6 +128,32 @@ namespace Charisma.OnlineStore.Infrastructure.EntityFramework.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Product", (string)null);
+                });
+
+            modelBuilder.Entity("Charisma.OnlineStore.Domain.Models.ProfitAggregate.Profit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("_active")
+                        .HasColumnType("bit")
+                        .HasColumnName("Active");
+
+                    b.Property<decimal>("_fixedAmount")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("FixedAmount");
+
+                    b.Property<string>("_title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(300)")
+                        .HasColumnName("Title");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Profit", (string)null);
                 });
 
             modelBuilder.Entity("Charisma.OnlineStore.Domain.Models.OrderAggregate.Order", b =>
