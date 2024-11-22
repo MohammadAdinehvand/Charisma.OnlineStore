@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Charisma.OnlineStore.Domain.Specifications
+namespace Charisma.OnlineStore.Domain.Specifications.OrderSpecification
 {
-    public class OrderTimeSpecification : ISpecification<Order>
+    public class OrderTimeSpecification : IOrderSpecification
     {
-        private readonly TimeOnly StartOfDay = new TimeOnly(8, 0); 
+        private readonly TimeOnly StartOfDay = new TimeOnly(8, 0);
         private readonly TimeOnly EndOfDay = new TimeOnly(19, 0);
 
         public string ErrorMessage => "Orders can only be placed between 8:00 AM and 7:00 PM.";

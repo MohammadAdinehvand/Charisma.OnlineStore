@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Charisma.OnlineStore.Domain.Specifications
+namespace Charisma.OnlineStore.Domain.Specifications.OrderSpecification
 {
-    public class MinimumOrderAmountSpecification : ISpecification<Order>
+    public class MinimumOrderAmountSpecification : IOrderSpecification
     {
-        private const decimal MinimumOrderAmount=50000;
+        private const decimal MinimumOrderAmount = 50000;
 
         public string ErrorMessage => $"The total order amount must be at least {MinimumOrderAmount:C}.";
 

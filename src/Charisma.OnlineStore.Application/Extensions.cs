@@ -2,7 +2,9 @@
 using Charisma.OnlineStore.Domain.DomainServices;
 using Charisma.OnlineStore.Domain.Factories;
 using Charisma.OnlineStore.Domain.Models.OrderAggregate;
+using Charisma.OnlineStore.Domain.Rules.PricingRule;
 using Charisma.OnlineStore.Domain.Specifications;
+using Charisma.OnlineStore.Domain.Specifications.OrderSpecification;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,17 +34,17 @@ namespace Charisma.OnlineStore.Application
 
 
 
-            services.AddScoped<IOrderFactory>(x =>
-             {
-                 IEnumerable<ISpecification<Order>> specifications = new List<ISpecification<Order>>()
-                 {
-                    { new MinimumOrderAmountSpecification() },
-                    { new OrderTimeSpecification() },
-                 };
-                 return new OrderFactory(specifications);
-             });
+            services.AddScoped<IOrderSpecification, MinimumOrderAmountSpecification>();
+            services.AddScoped<IOrderSpecification, OrderTimeSpecification>();
 
+            services.AddScoped<IOrderFactory,OrderFactory>();
+
+       
+            services.AddScoped<IOrderPicingVisitor, ProfitMarginVisitor>();
+            services.AddScoped<IOrderPicingVisitor, DiscountVisitor>();
             services.AddScoped<IPricingService, PricingService>();
+
+
             return services;
 
         }

@@ -1,6 +1,7 @@
 ﻿using Charisma.OnlineStore.Abstractions.Specification;
 using Charisma.OnlineStore.Domain.Exceptions;
 using Charisma.OnlineStore.Domain.Models.OrderAggregate;
+using Charisma.OnlineStore.Domain.Specifications.OrderSpecification;
 using Charisma.OnlineStore.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,9 @@ namespace Charisma.OnlineStore.Domain.Factories
 {
     public class OrderFactory : IOrderFactory
     {
-        private readonly IEnumerable<ISpecification<Order>> _specifications;
+        private readonly IEnumerable<IOrderSpecification> _specifications;
 
-        public OrderFactory(IEnumerable<ISpecification<Order>> specifications)
+        public OrderFactory(IEnumerable<IOrderSpecification> specifications)
         {
             _specifications = specifications;
         }
